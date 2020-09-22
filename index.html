@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+	<title>Login form</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="javascript.js"></script>
+</head>
+<body onClick="closeDummy()">
+	<div id="loader" ></div>
+	<div id="success-dummy">
+		<i class="fa fa-check-circle fa-5x"></i>
+		<p>Click Anywhere on dummy to Close it.</p>
+	</div>
+	<form id="myForm">
+		<span><i class="fa fa-user fa-5x fa-inverse"></i></span>
+  		<div class="container">
+  			<div class="form-input">
+    			<label for="uname"><b>Email</b></label>
+    			<input type="text" placeholder="Email" name="uname" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+    			title="enter a valid email of form xxx@xx.xx" required>
+    		</div>
+    		<div class="form-input">
+    			<label for="psw"><b>Password</b></label>
+    			<input type="password" placeholder="Password" name="psw" pattern=".{8,}" title="atleast 8 characters" required>
+    		</div>
+    		<div>
+    			<input type="submit" id='submit' value="Login">
+    		</div>
+  		</div>
+	</form>
+	<script type="text/javascript">
+		const myForm= document.getElementById('myForm');
+		function stopLoader(){
+			var loader=document.getElementById('loader');
+			var submit_dummy=document.getElementById('success-dummy');
+			loader.style.display="none";
+			submit_dummy.style.display="inline";
+			console.log(submit_dummy);   
+		}
+		myForm.addEventListener("submit",(event) =>{
+			event.preventDefault();
+			var loader=document.getElementById('loader');
+			loader.style.display="inline";
+			setTimeout(stopLoader,10000);
+
+		})
+		function closeDummy(){
+			var submit_dummy=document.getElementById('success-dummy');
+			submit_dummy.style.display="none";
+		}
+	</script>
+</body>
+</html>
